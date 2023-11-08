@@ -31,7 +31,7 @@ int main()
 				display();
 				break;
 			case 4:
-				printf("Bye, Fuck Off!!");
+				printf("Bye,!!");
 				exit(0);
 			default:
 				printf("\nInvalid Option!!\n");
