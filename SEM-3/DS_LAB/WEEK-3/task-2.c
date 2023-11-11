@@ -64,10 +64,10 @@ int main() {
                 break;
             case 2:
                 exit(0);
-                break;
+                //break;
             default:
                 printf("Invalid Option!!\n");
-                break;
+                //break;
         }
     }
     return 0;
