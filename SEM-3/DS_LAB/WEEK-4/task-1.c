@@ -1,15 +1,13 @@
 // 1.	Implementation of possible operations on Queue using arrays.
-
 #include<stdio.h>
-#define mod %
 #define SIZE 5
 int front = -1, rear = -1;
 int queue[SIZE];
-
 int isEmpty();
 int isFull();
-int enQueue(int);
-int deQueue();
+void enQueue(int);
+void deQueue();
+void display();
 
 int main()
 {
@@ -20,26 +18,12 @@ int main()
 		scanf("%d",&opt);
 		if(opt == 1){
 			int n;
-			printf("Enter an Element to Insert: ");
+			printf(">> Enter an Element to Insert: ");
 			scanf("%d",&n);
-			if(enQueue(n)== 1)
-				printf("Element Inserted Successfully!!\n");
-		} else if(opt == 2){
-			int n = deQueue();
-			if(n != -1)
-				printf("%d Removed!!\n",n);
-			else
-				printf("Queue is Empty!!\n");
-		} else if(opt == 3){
-			for(int i = front; i <= rear; i++)
-				printf("%d ",queue[i]);
-			printf("\n");
-			printf("Array: ");
-			for(int i=0; i<SIZE; i++)
-				printf("%d ", queue[i]);
-			printf("\n");
-			printf("CURRENT front = %d, rear = %d\n", front, rear);
+			enQueue(n);
 		}
+		else if(opt == 2){ deQueue(); }
+		else if(opt == 3){ display(); }
 	} while(opt != 4);
 	return 0;
 }
@@ -58,29 +42,36 @@ int isFull(){
 		return 0;
 }
 
-int enQueue(int n){
-	if (isFull() == 1)
-		return 0;
-	else if(isEmpty() == 1)
+void enQueue(int n){
+	if (isFull()){
+		printf(">>Queue Overflow!!\n");
+		return;
+	}
+	else if(isEmpty())
 		front = rear = 0;
 	else
 		rear++;
 	queue[rear] = n;
-	return 1;
+	printf(">> Element enQueued Successfully!\n");
 }
 
-int deQueue(){
-	int x;
-	if(isEmpty()==1)
-		return -1;
+void deQueue(){
+	if(isEmpty())
+		printf(">> Queue Underflow..\n");
 	else if(front == rear){
-		x = queue[rear];
+		printf(">> The deQueued element is %d\n", queue[front]);
 		front = rear = -1;
-		return x;
 	}
 	else {
-		x = queue[front];
+		printf(">> The deQueued element is %d\n", queue[front]);
 		front++;
-		return x;
 	}
+}
+
+void display() {
+	printf(">> Element in Queue: ");
+	for(int i = front; i <= rear; i++)
+		printf("%d ",queue[i]);
+	printf("\n");
+	// printf(">> front = %d, rear = %d\n", front, rear);
 }
