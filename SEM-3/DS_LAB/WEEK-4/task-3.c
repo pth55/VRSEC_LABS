@@ -1,3 +1,4 @@
+// 3.	Implementation of possible operations on circular queue using arrays.
 #include<stdio.h>
 #define mod %
 #define SIZE 5
