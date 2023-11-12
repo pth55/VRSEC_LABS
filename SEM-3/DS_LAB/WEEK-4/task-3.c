@@ -34,15 +34,12 @@ int main()
 }
 
 int isEmpty(){
-	if ((front == -1) && (rear == -1))
-		return 1;
-	else
-		return 0;
+	if ((front == -1) && (rear == -1)) return 1;
+	return 0;
 }
 
 int isFull(){
-	if((rear+1)%SIZE == front)
-		return 1;
+	if((rear+1)%SIZE == front) return 1;
 	return 0;
 }
 
