@@ -11,9 +11,10 @@ int main() {
 	int n;
 	printf("Enter a Decimal Number: ");
 	scanf("%d", &n);
-	while(n > 0){
-		push((n%2));
-		n /= 2;
+	int temp = n;
+	while(temp > 0){
+		push((temp%2));
+		temp /= 2;
 	}	
 	printf("%d in Binary: ", n);
 	display();
