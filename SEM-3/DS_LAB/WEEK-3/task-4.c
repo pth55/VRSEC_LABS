@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define SIZE 10
+#define SIZE 20
 int top = -1;
 char stack[SIZE];
 
@@ -19,12 +19,14 @@ void display() {
 
 int main() {
     char ch[SIZE];
+    printf("Enter a String: ");
     fgets(ch, SIZE, stdin);
     int i = 0;
     while(ch[i] != '\0'){
         push(ch[i]);
         i += 1;
     }
+    printf("Revered String: ");
     display();
     return 0;
 }
