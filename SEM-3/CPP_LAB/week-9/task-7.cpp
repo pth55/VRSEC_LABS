@@ -7,7 +7,9 @@ public:
     float balance;
     int time;
 
-    BankAccount(string name, float bal, int time) : name(name), balance(bal), time(time) {}
+    BankAccount(string name, float bal, int time) {
+        this->name = name; this->bal = bal; this->time = time;
+    }
 
     void display(){
         cout << "Acc. Holder: " << name << endl;
