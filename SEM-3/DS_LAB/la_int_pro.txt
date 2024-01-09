@@ -1,0 +1,1031 @@
+‭Data Structures Programs‬
+‭INDEX:‬
+
+‭ 1.Linear search‬
+0
+‭02.Binary search‬
+‭03.Bubbling sort‬
+‭04.Selection sort‬
+‭05.Insertion sort‬
+‭06.Quick sort‬
+‭07.Merge sort‬
+‭08.Stack [Array]‬
+‭09.Queue [Array]‬
+‭10.Linked list inserting node at end‬
+‭11.Linked list inserting node at front‬
+‭12.Linked list inserting node at specific position‬
+‭13.Linked list deleting node at end‬
+‭14.Linked list deleting node at front‬
+‭15.Linked list deleting node at specific position‬
+‭16.Stack [Dynamic array]‬
+‭17.Queue [Dynamic array]‬
+‭18.Addition of polynomials‬
+‭19.BST creation and traversal techniques { inorder, preorder, postorder}‬
+‭20.Postfix evaluation‬
+‭21.Heap sort‬
+
+‭-> LINEAR SEARCH‬
+‭ include <stdio.h>‬
+#
+‭int main() {‬
+‭int arr[20], size, key, index;‬
+‭printf("Number of elements in the list: ");‬
+‭scanf("%d", &size);‬
+‭printf("Enter the elements: ");‬
+‭for (index = 0; index < size; index++) {‬
+‭scanf("%d", &arr[index]);‬
+‭}‬
+‭printf("Enter the element to be searched: ");‬
+‭scanf("%d", &key);‬
+‭for (index = 0; index < size; index++) {‬
+‭if (arr[index] == key) {‬
+‭printf("Key element found at index %d\n", index);‬
+‭return 0;‬
+‭}‬
+‭}‬
+‭printf("Key element not found\n");‬
+‭return 0;‬
+‭}‬
+‭_________________________________________________________________________________‬
+‭-> BINARY SEARCH‬
+‭ include <stdio.h>‬
+#
+‭int main() {‬
+‭int arr[20], size, key, i,high,low,mid;‬
+‭printf("Number of elements in the list: ");‬
+‭scanf("%d", &size);‬
+‭printf("Enter the elements: ");‬
+‭for (i = 0; i < size; i++) {‬
+‭scanf("%d", &arr[i]);‬
+‭}‬
+‭printf("Enter the element to be searched: ");‬
+‭scanf("%d", &key);‬
+‭low=0;‬
+‭high=size-1;‬
+‭while(low<=high)‬
+‭{‬
+‭mid=(high+low)/2;‬
+‭if (arr[mid]==key)‬
+‭{‬
+‭printf("Element found at : %d",mid);‬
+
+‭break;‬
+}‭ ‬
+‭else if(arr[mid]<key)‬
+‭{‬
+‭low=mid+1;‬
+‭}‬
+‭else‬
+‭{‬
+‭high=mid-1;‬
+‭}‬
+}‭ ‬
+‭if(low>high)‬
+‭{‬
+‭printf("Element is not present in list")‬
+‭}‬
+‭return 0;‬
+‭}‬
+‭_________________________________________________________________________________‬
+‭->BUBBLE SORTING‬
+‭ include<stdio.h>‬
+#
+‭int main()‬
+‭{‬
+‭int n,arr[100],i,j,temp;‬
+‭printf("Enter the number of elements in given array:");‬
+‭scanf("%d",&n);‬
+‭printf("Enter the elements in array:\n");‬
+‭for(i=1;i<=n;i++)‬
+‭{‬
+‭scanf("%d",&arr[i]);‬
+‭}‬
+‭for (i=1;i<=n;i++)‬
+‭{‬
+‭for (j=1;j<=n-i;j++)‬
+‭{‬
+‭if (arr[j]>arr[j+1])‬
+‭{‬
+‭temp=arr[j];‬
+‭arr[j]=arr[j+1];‬
+‭arr[j+1]=temp;‬
+‭}‬
+‭}‬
+‭}‬
+‭printf("The sorted array is : \n");‬
+
+f‭or(i=1;i<=n;i++)‬
+‭{‬
+‭printf("%d",arr[i]);‬
+‭}‬
+‭return 0;‬
+‭}‬
+
+‭_________________________________________________________________________________‬
+‭->INSERTION SORTING‬
+‭ include <stdio.h>‬
+#
+‭int main()‬
+‭{‬
+‭int n, arr[100], i, j, key;‬
+‭printf("Enter the number of elements in the given array:");‬
+‭scanf("%d", &n);‬
+‭printf("Enter the elements in the array:\n");‬
+‭for (i = 0; i < n; i++)‬
+‭{‬
+‭scanf("%d", &arr[i]);‬
+‭}‬
+f‭or (i = 1; i < n; i++)‬
+‭{‬
+‭key = arr[i];‬
+‭j = i - 1;‬
+‭while (j >= 0 && arr[j] > key)‬
+‭{‬
+‭arr[j + 1] = arr[j];‬
+‭j--;‬
+‭}‬
+‭arr[j + 1] = key;‬
+‭}‬
+‭ rintf("The sorted array is:\n");‬
+p
+‭for (i = 0; i < n; i++)‬
+‭{‬
+‭printf("%d ", arr[i]);‬
+‭}‬
+‭return 0;‬
+}‭ ‬
+‭_________________________________________________________________________________‬
+
+‭->SELECTION SORTING‬
+‭ include<stdio.h>‬
+#
+‭int main()‬
+‭{‬
+‭int n,arr[100],i,j,temp;‬
+‭printf("Enter the number of elements in given array:");‬
+‭scanf("%d",&n);‬
+‭printf("Enter the elements in array:\n");‬
+‭for(i=1;i<=n;i++)‬
+‭{‬
+‭scanf("%d",&arr[i]);‬
+‭}‬
+‭for (i=1;i<=n;i++)‬
+‭{‬
+‭for (j=i+1;j<=n-i;j++)‬
+‭{‬
+‭if (arr[i]>arr[j])‬
+‭{‬
+‭temp=arr[i];‬
+‭arr[i]=arr[j];‬
+‭arr[j]=temp;‬
+‭}‬
+‭}‬
+‭}‬
+‭printf("The sorted array is : \n");‬
+‭for(i=1;i<=n;i++)‬
+‭{‬
+‭printf("%d",arr[i]);‬
+‭}‬
+‭return 0;‬
+‭}‬
+‭_________________________________________________________________________________‬
+‭->QUICK SORTING‬
+‭ include<stdio.h>‬
+#
+‭void swap(int A[100], int i, int j)‬
+‭{‬
+‭int temp;‬
+‭temp=A[i];‬
+‭A[i]=A[j];‬
+‭A[j]=temp;‬
+‭}‬
+‭void Quicksort(int A[100], int l, int r)‬
+
+‭{‬
+i‭nt i,j;‬
+‭i=l+1;‬
+‭for(j=l+1;j<=r;j++)‬
+‭{‬
+‭if(A[j]<=A[l])‬
+‭{‬
+‭swap(A,i,j);‬
+‭i++;‬
+‭}‬
+‭}‬
+‭swap(A,i-1,l);‬
+‭if(l<r)‬
+‭{‬
+‭Quicksort(A,l,i-1);‬
+‭Quicksort(A,i,r);‬
+‭}‬
+}‭ ‬
+‭int main() {‬
+‭int Arr[100], n, i;‬
+‭printf("Size of array: ");‬
+‭scanf("%d", &n);‬
+‭printf("Array elements: ");‬
+‭for (i = 0; i < n; i++)‬
+‭scanf("%d", &Arr[i]);‬
+‭Quicksort(Arr, 0, n - 1);‬
+‭printf("Sorted array: ");‬
+‭for (i = 0; i < n; i++)‬
+‭printf("%d ", Arr[i]);‬
+‭return 0;‬
+‭}‬
+‭_________________________________________________________________________________‬
+‭->MERGE SORTING‬
+‭ include<stdio.h>‬
+#
+‭void merge(int A[100],int l,int m,int h)‬
+‭{‬
+‭int n1=m-l+1;‬
+‭int n2=h-m;‬
+‭int L[n1],R[n2],i,j,k;‬
+‭for(i=0;i<n1;i++)‬
+‭L[i]=A[l+i];‬
+‭for(j=0;j<n2;j++)‬
+‭R[j]=A[m+1+j];‬
+
+i‭=0;‬
+‭j=0;‬
+‭k=l;‬
+‭for(k=l;k<=h;k++){‬
+‭if(i<n1 && j<n2)‬
+‭{‬
+‭if(L[i]<=R[j])‬
+‭{‬
+‭A[k]=L[i];‬
+‭i++;‬
+‭}‬
+‭else‬
+‭{‬
+‭A[k]=R[j];‬
+‭j++;‬
+‭}‬
+‭}‬
+‭else if (i < n1) {‬
+‭A[k] = L[i];‬
+‭i++;‬
+‭}‬
+‭else if(j < n2) {‬
+‭A[k] = R[j];‬
+‭j++;‬
+‭}‬
+‭}‬
+}‭ ‬
+‭void mergesort(int A[],int l,int h)‬
+‭{‬
+‭int m;‬
+‭if (l < h) {‬
+‭m=(l+h)/2;‬
+‭mergesort(A,l,m);‬
+‭mergesort(A,m+1,h);‬
+‭merge(A,l,m,h);‬
+‭}‬
+‭}‬
+‭int main()‬
+‭{‬
+‭int Arr[100],n,i;‬
+‭printf("size of array : ");‬
+‭scanf("%d",&n);‬
+‭printf("Array elements : ");‬
+‭for(i=0;i<n;i++)‬
+‭scanf("%d",&Arr[i]);‬
+‭mergesort(Arr,0,n-1);‬
+
+‭ rintf("Sorted elements : ");‬
+p
+‭for(i=0;i<n;i++)‬
+‭printf("%d ",Arr[i]);‬
+‭return 0;‬
+‭}‬
+‭_________________________________________________________________________________‬
+‭->STACK USING ARRAY‬
+‭ include <stdio.h>‬
+#
+‭#define size 5‬
+‭int arr[size], top = -1;‬
+
+v‭ oid push();‬
+‭void pop();‬
+‭void show();‬
+‭int main() {‬
+‭int choice;‬
+‭while (1) {‬
+‭printf("\nTo perform operations on the stack, select a choice");‬
+‭printf("\n1. Push\n2. Pop\n3. Show\n4. Exit\n");‬
+‭printf("Enter choice: ");‬
+‭scanf("%d", &choice);‬
+‭switch (choice) {‬
+‭case 1:‬
+‭push();‬
+‭break;‬
+‭case 2:‬
+‭pop();‬
+‭break;‬
+‭case 3:‬
+‭show();‬
+‭break;‬
+‭case 4:‬
+‭printf("\nEXIT\n");‬
+‭return 0;‬
+‭default:‬
+‭printf("\nInvalid choice\n");‬
+
+‭}‬
+‭}‬
+‭return 0;‬
+‭}‬
+‭void push() {‬
+‭if (top == size - 1) {‬
+‭printf("Overflow!! Stack is full.\n");‬
+‭} else {‬
+‭int x;‬
+‭printf("Enter the value to push: ");‬
+‭scanf("%d", &x);‬
+‭top = top + 1;‬
+‭arr[top] = x;‬
+‭}‬
+‭}‬
+‭void pop() {‬
+‭if (top == -1) {‬
+‭printf("Underflow!! Stack is empty.\n");‬
+‭} else {‬
+‭printf("Popped element is: %d\n", arr[top]);‬
+‭top = top - 1;‬
+‭}‬
+‭}‬
+‭void show() {‬
+‭if (top == -1) {‬
+‭printf("Stack is empty\n");‬
+‭} else {‬
+‭printf("Elements present in the stack:\n");‬
+‭for (int i = top; i >= 0; i--) {‬
+‭printf("%d\n", arr[i]);‬
+‭}‬
+‭}‬
+‭}‬
+‭_________________________________________________________________________________‬
+‭->QUEUE USING ARRAY‬
+‭ include <stdio.h>‬
+#
+‭#define size 5‬
+‭int queue[size];‬
+
+‭int front = -1, rear = -1;‬
+v‭ oid enqueue();‬
+‭void dequeue();‬
+‭void display();‬
+‭int main() {‬
+‭int choice;‬
+‭while (1) {‬
+‭printf("\nTo perform operations on the queue, select a choice");‬
+‭printf("\n1. Enqueue\n2. Dequeue\n3. Display\n4. Exit\n");‬
+‭printf("Enter choice: ");‬
+‭scanf("%d", &choice);‬
+‭switch (choice) {‬
+‭case 1:‬
+‭enqueue();‬
+‭break;‬
+‭case 2:‬
+‭dequeue();‬
+‭break;‬
+‭case 3:‬
+‭display();‬
+‭break;‬
+‭case 4:‬
+‭printf("\nEXIT\n");‬
+‭return 0;‬
+‭default:‬
+‭printf("\nInvalid choice\n");‬
+‭}‬
+‭}‬
+‭return 0;‬
+‭}‬
+‭void enqueue() {‬
+‭if (rear == size - 1) {‬
+‭printf("Overflow!! Queue is full.\n");‬
+‭} else {‬
+‭int x;‬
+‭printf("Enter the value to enqueue: ");‬
+‭scanf("%d", &x);‬
+‭if (front == -1) {‬
+
+‭front = 0;‬
+}‭ ‬
+‭rear = rear + 1;‬
+‭queue[rear] = x;‬
+‭}‬
+‭}‬
+‭void dequeue() {‬
+‭if (front == -1) {‬
+‭printf("Underflow!! Queue is empty.\n");‬
+‭} else {‬
+‭printf("Dequeued element is: %d\n", queue[front]);‬
+‭if (front == rear) {‬
+‭front = rear = -1;‬
+‭} else {‬
+‭front = front + 1;‬
+‭}‬
+‭}‬
+‭}‬
+‭void display() {‬
+‭if (front == -1) {‬
+‭printf("Queue is empty\n");‬
+‭} else {‬
+‭printf("Elements present in the queue:\n");‬
+‭for (int i = front; i <= rear; i++) {‬
+‭printf("%d\n", queue[i]);‬
+‭}‬
+‭}‬
+‭}‬
+‭_________________________________________________________________________________‬
+‭->Linked list inserting a element at the end‬
+‭ include<stdio.h>‬
+#
+‭#include<stdlib.h>‬
+i‭nt main()‬
+‭{‬
+‭int value , ch , pos;‬
+‭struct node‬
+‭{‬
+‭int data;‬
+‭struct node *next;‬
+‭}*new,*temp,*head;‬
+
+‭do {‬
+‭new = (struct node*)malloc(sizeof(struct node));‬
+‭printf("enter a number : ");‬
+‭scanf("%d",&value);‬
+‭new -> data = value;‬
+‭new -> next = NULL;‬
+‭if (head == NULL)‬
+‭{‬
+‭temp = new;‬
+‭head = new;‬
+‭}‬
+‭else‬
+‭{‬
+‭temp -> next = new;‬
+‭temp = new;‬
+‭}‬
+‭printf("Do you want another node (enter 1 to contiue) : ");‬
+‭scanf("%d",&ch);‬
+‭}while(ch == 1);‬
+‭ rintf("Linked list is: ");‬
+p
+‭struct node *c = head;‬
+‭while (c != NULL)‬
+‭{‬
+‭printf("%d -> ", c -> data);‬
+‭c = c -> next;‬
+‭}‬
+‭printf("NULL\n");‬
+‭return 0;‬
+‭}‬
+‭_________________________________________________________________________________‬
+‭->Linked list insert a element at front position‬
+‭ include<stdio.h>‬
+#
+‭#include<stdlib.h>‬
+i‭nt main()‬
+‭{‬
+‭int value , ch;‬
+‭struct node‬
+‭{‬
+‭int data;‬
+‭struct node *next;‬
+‭}*new,*temp,*head;‬
+
+‭do {‬
+‭new = (struct node*)malloc(sizeof(struct node));‬
+‭printf("enter a number : ");‬
+‭scanf("%d",&value);‬
+‭new -> data = value;‬
+‭new -> next = head;‬
+‭head = new;‬
+‭printf("Do you want another node (enter 1 to contiue) : ");‬
+‭scanf("%d",&ch);‬
+‭}while(ch == 1);‬
+‭ rintf("Linked list is: ");‬
+p
+‭struct node *c = head;‬
+‭while (c != NULL)‬
+‭{‬
+‭printf("%d -> ", c -> data);‬
+‭c = c -> next;‬
+‭}‬
+‭printf("NULL\n");‬
+‭return 0;‬
+‭}‬
+‭_________________________________________________________________________________‬
+‭->Linked list insert a element at specified position‬
+‭ include<stdio.h>‬
+#
+‭#include<stdlib.h>‬
+i‭nt main()‬
+‭{‬
+‭int value , ch , pos;‬
+‭struct node‬
+‭{‬
+‭int data;‬
+‭struct node *next;‬
+‭}*new,*temp,*head;‬
+‭do {‬
+‭new = (struct node*)malloc(sizeof(struct node));‬
+‭printf("enter a number : ");‬
+‭scanf("%d",&value);‬
+‭new -> data = value;‬
+‭new -> next = NULL;‬
+‭if (head == NULL)‬
+‭{‬
+‭temp = new;‬
+
+‭head = new;‬
+}‭ ‬
+‭else‬
+‭{‬
+‭temp -> next = new;‬
+‭temp = new;‬
+‭}‬
+‭printf("Do you want another node (enter 1 to contiue) : ");‬
+‭scanf("%d",&ch);‬
+‭}while(ch == 1);‬
+‭ rintf("Enter the position to insert the value: ");‬
+p
+‭scanf("%d", &pos);‬
+‭new = (struct node *)malloc(sizeof(struct node));‬
+‭printf("Enter a number: ");‬
+‭scanf("%d", &value);‬
+‭new -> data = value;‬
+‭temp = head;‬
+‭for (int i = 1; i < pos - 1; i++)‬
+‭{‬
+‭temp = temp->next;‬
+‭}‬
+‭new->next = temp->next;‬
+‭temp->next = new;‬
+‭printf("Linked list is: ");‬
+‭struct node *c = head;‬
+‭while (c != NULL)‬
+‭{‬
+‭printf("%d -> ", c -> data);‬
+‭c = c -> next;‬
+‭}‬
+‭printf("NULL\n");‬
+‭return 0;‬
+‭}‬
+‭_________________________________________________________________________________‬
+‭->STACK USING LINKED LIST‬
+‭ include <stdio.h>‬
+#
+‭#include <stdlib.h>‬
+‭struct node {‬
+‭int data;‬
+‭struct node* next;‬
+
+‭};‬
+‭struct node *top = NULL; // Renamed to top‬
+‭void push(int value) {‬
+‭struct node* newNode;‬
+‭newNode = (struct node*)malloc(sizeof(struct node));‬
+‭if (newNode == NULL) {‬
+‭printf("Memory allocation failed.\n");‬
+‭return;‬
+‭}‬
+‭ rintf("Enter a value: ");‬
+p
+‭scanf("%d", &value);‬
+‭newNode->data = value;‬
+‭newNode->next = top;‬
+‭top = newNode;‬
+‭}‬
+‭void pop() {‬
+‭if (top == NULL) {‬
+‭printf("Stack is empty. Cannot pop.\n");‬
+‭return;‬
+‭}‬
+s‭ truct node* temp;‬
+‭temp = top;‬
+‭printf("Deleted element is %d\n", top->data);‬
+‭top = top->next;‬
+‭temp->next = NULL;‬
+‭free(temp);‬
+‭}‬
+‭void display() {‬
+‭struct node* temp = top;‬
+‭printf("Stack elements: ");‬
+‭while (temp != NULL) {‬
+‭printf("%d ", temp->data);‬
+‭temp = temp->next;‬
+‭}‬
+‭printf("\n");‬
+‭}‬
+‭int main() {‬
+‭int choice, value;‬
+‭while (1) {‬
+
+‭ rintf("\nEnter your choice:\n");‬
+p
+‭printf("1. Push\n2. Pop\n3. Display\n4. Exit\n");‬
+‭scanf("%d", &choice);‬
+‭switch (choice) {‬
+‭case 1:‬
+‭push(value);‬
+‭break;‬
+‭case 2:‬
+‭pop();‬
+‭break;‬
+‭case 3:‬
+‭display();‬
+‭break;‬
+‭case 4:‬
+‭exit(0);‬
+‭break;‬
+‭default:‬
+‭printf("Invalid choice\n");‬
+‭}‬
+}‭ ‬
+‭return 0;‬
+‭}‬
+‭_________________________________________________________________________________‬
+‭->QUEUE USING LINKED LIST‬
+‭ include <stdio.h>‬
+#
+‭#include <stdlib.h>‬
+s‭ truct node‬
+‭{‬
+‭int data;‬
+‭struct node* next;‬
+‭};‬
+s‭ truct node* front = NULL;‬
+‭struct node* rear = NULL;‬
+v‭ oid enqueue(int value)‬
+‭{‬
+‭struct node* new = (struct node*)malloc(sizeof(struct node));‬
+‭if (new == NULL)‬
+‭{‬
+‭printf("Queue is full. Unable to enqueue.\n");‬
+
+‭return;‬
+‭}‬
+‭ rintf("Enter a value: ");‬
+p
+‭scanf("%d", &value);‬
+‭new->data = value;‬
+‭new->next = NULL;‬
+i‭f (rear == NULL)‬
+‭{‬
+‭front = rear = new;‬
+‭}‬
+‭else‬
+‭{‬
+‭rear->next = new;‬
+‭rear = new;‬
+‭}‬
+‭}‬
+v‭ oid dequeue()‬
+‭{‬
+‭if (front == NULL)‬
+‭{‬
+‭printf("Queue is empty. Unable to dequeue.\n");‬
+‭return;‬
+‭}‬
+s‭ truct node* temp = front;‬
+‭printf("Dequeued element is %d\n", front->data);‬
+i‭f (front == rear)‬
+‭{‬
+‭front = rear = NULL;‬
+‭}‬
+‭else‬
+‭{‬
+‭front = front->next;‬
+‭}‬
+‭free(temp);‬
+‭}‬
+v‭ oid display()‬
+‭{‬
+‭if (front == NULL)‬
+‭{‬
+
+‭ rintf("Queue is empty.\n");‬
+p
+‭return;‬
+‭}‬
+s‭ truct node* temp = front;‬
+‭printf("Queue elements: ");‬
+‭while (temp != NULL)‬
+‭{‬
+‭printf("%d ", temp->data);‬
+‭temp = temp->next;‬
+‭}‬
+‭printf("\n");‬
+‭}‬
+i‭nt main()‬
+‭{‬
+‭int choice, value;‬
+‭ hile (1)‬
+w
+‭{‬
+‭printf("\nEnter your choice:\n");‬
+‭printf("1. Enqueue\n2. Dequeue\n3. Display\n4. Exit\n");‬
+‭scanf("%d", &choice);‬
+s‭ witch (choice)‬
+‭{‬
+‭case 1:‬
+‭enqueue(value);‬
+‭break;‬
+‭case 2:‬
+‭dequeue();‬
+‭break;‬
+‭case 3:‬
+‭display();‬
+‭break;‬
+‭case 4:‬
+‭exit(0);‬
+‭default:‬
+‭printf("Invalid choice. Please enter a valid option.\n");‬
+‭}‬
+‭}‬
+‭return 0;‬
+‭}‬
+‭_________________________________________________________________________________‬
+
+‭->ADDITION OF POLYNOMIALS‬
+‭ include <stdio.h>‬
+#
+‭#include <stdlib.h>‬
+‭struct node {‬
+‭int coef, expo;‬
+‭struct node* next;‬
+‭};‬
+‭int main() {‬
+‭struct node *head1 = NULL, *head2 = NULL, *new1, *new2, *p1, *p2;‬
+‭int ch;‬
+‭//creating the 1st polynomial‬
+‭do {‬
+‭new1 = (struct node*)malloc(sizeof(struct node));‬
+‭printf("Enter coef and expo for polynomial 1: ");‬
+‭scanf("%d %d", &new1->coef, &new1->expo);‬
+‭new1->next = NULL;‬
+‭if (head1 == NULL) {‬
+‭head1 = new1;‬
+‭p1 = new1;‬
+‭} else {‬
+‭p1->next = new1;‬
+‭p1 = new1;‬
+‭}‬
+‭printf("Do you want to add one more term to polynomial 1? (Enter 1 for yes) ");‬
+‭scanf("%d", &ch);‬
+‭} while (ch == 1);‬
+‭//creating the 2nd polynomial‬
+‭do {‬
+‭new2 = (struct node*)malloc(sizeof(struct node));‬
+‭printf("Enter coef and expo for polynomial 2: ");‬
+‭scanf("%d %d", &new2->coef, &new2->expo);‬
+‭new2->next = NULL;‬
+‭if (head2 == NULL) {‬
+‭head2 = new2;‬
+‭p2 = new2;‬
+‭} else {‬
+‭p2->next = new2;‬
+‭p2 = new2;‬
+‭}‬
+‭printf("Do you want to add one more term to polynomial 2? (Enter 1 for yes) ");‬
+‭scanf("%d", &ch);‬
+‭} while (ch == 1);‬
+
+‭ 1 = head1;‬
+p
+‭p2 = head2;‬
+‭ rintf("Sum of the polynomials: ");‬
+p
+‭while (p1 != NULL || p2 != NULL) {‬
+‭if (p1 != NULL && p2 != NULL) {‬
+‭if (p1->expo == p2->expo) {‬
+‭printf("%dx^%d", p1->coef + p2->coef, p1->expo);‬
+‭p1 = p1->next;‬
+‭p2 = p2->next;‬
+‭} else if (p1->expo > p2->expo) {‬
+‭printf("%dx^%d", p1->coef, p1->expo);‬
+‭p1 = p1->next;‬
+‭} else {‬
+‭printf("%dx^%d", p2->coef, p2->expo);‬
+‭p2 = p2->next;‬
+‭}‬
+‭if (p1 != NULL || p2 != NULL)‬
+‭printf(" + ");‬
+‭} else if (p1 != NULL) {‬
+‭printf("%dx^%d", p1->coef, p1->expo);‬
+‭p1 = p1->next;‬
+‭if (p1 != NULL)‬
+‭printf(" + ");‬
+‭} else if (p2 != NULL) {‬
+‭printf("%dx^%d", p2->coef, p2->expo);‬
+‭p2 = p2->next;‬
+‭if (p2 != NULL)‬
+‭printf(" + ");‬
+‭}‬
+‭}‬
+‭while (head1 != NULL) {‬
+‭struct node *temp = head1;‬
+‭head1 = head1->next;‬
+‭free(temp);‬
+‭}‬
+‭while (head2 != NULL) {‬
+‭struct node *temp = head2;‬
+‭head2 = head2->next;‬
+‭free(temp);‬
+‭}‬
+‭return 0;‬
+‭}‬
+‭_________________________________________________________________________________‬
+
+‭->‬‭BST creation and‬‭traversal techniques { inorder, preorder, postorder}‬
+‭ include <stdio.h>‬
+#
+‭#include <stdlib.h>‬
+s‭ truct node‬
+‭{‬
+‭int num;‬
+‭struct node *left;‬
+‭struct node *right;‬
+‭};‬
+s‭ truct node *create()‬
+‭{‬
+‭struct node *temp;‬
+‭temp = (struct node *)malloc(sizeof(struct node));‬
+‭temp->left = NULL;‬
+‭temp->right = NULL;‬
+‭printf("Enter value: ");‬
+‭scanf("%d", &temp->num);‬
+‭return temp;‬
+‭}‬
+v‭ oid inorder(struct node *T)‬
+‭{‬
+‭if (T != NULL)‬
+‭{‬
+‭inorder(T->left);‬
+‭printf("%d ", T->num); // Print the node's value during in-order traversal.‬
+‭inorder(T->right);‬
+‭}‬
+‭}‬
+v‭ oid preorder(struct node *T)‬
+‭{‬
+‭if (T != NULL)‬
+‭{‬
+‭printf("%d ", T->num); // Print the node's value before traversing its children.‬
+‭preorder(T->left);‬
+‭preorder(T->right);‬
+‭}‬
+‭}‬
+v‭ oid postorder(struct node *T)‬
+‭{‬
+‭if (T != NULL)‬
+
+‭{‬
+‭ ostorder(T->left);‬
+p
+‭postorder(T->right);‬
+‭printf("%d ", T->num); // Print the node's value after traversing its children.‬
+‭}‬
+‭}‬
+i‭nt main()‬
+‭{‬
+‭struct node *v1, *v2, *v3, *v4, *v5, *v6, *v7;‬
+/‭/ Create the binary tree‬
+‭v1 = create();‬
+‭v2 = create();‬
+‭v3 = create();‬
+‭v4 = create();‬
+‭v5 = create();‬
+‭v6 = create();‬
+‭v7 = create();‬
+v‭ 1->left = v2;‬
+‭v1->right = v3;‬
+‭v2->left = v4;‬
+‭v2->right = v5;‬
+‭v3->left = v6;‬
+‭v3->right = v7;‬
+‭ rintf("\nInorder: ");‬
+p
+‭inorder(v1);‬
+‭ rintf("\nPreorder: ");‬
+p
+‭preorder(v1);‬
+‭ rintf("\nPostorder: ");‬
+p
+‭postorder(v1);‬
+‭return 0;‬
+‭}‬
+‭_________________________________________________________________________________‬
+‭->POSTFIX EVALUATION‬
+‭ include <ctype.h>‬
+#
+‭#include <stdio.h>‬
+
+‭ include <stdlib.h>‬
+#
+‭#include <string.h>‬
+s‭ truct Stack‬
+‭{‬
+‭int top;‬
+‭unsigned capacity;‬
+‭int* array;‬
+‭};‬
+s‭ truct Stack* createStack(unsigned capacity)‬
+‭{‬
+‭struct Stack* stack‬
+‭= (struct Stack*)malloc(sizeof(struct Stack));‬
+‭if (!stack)‬
+‭return NULL;‬
+s‭ tack->top = -1;‬
+‭stack->capacity = capacity;‬
+‭stack->array‬
+‭= (int*)malloc(stack->capacity * sizeof(int));‬
+‭if (!stack->array)‬
+‭return NULL;‬
+‭return stack;‬
+‭}‬
+i‭nt isEmpty(struct Stack* stack)‬
+‭{‬
+‭return stack->top == -1;‬
+‭}‬
+c‭ har peek(struct Stack* stack)‬
+‭{‬
+‭return stack->array[stack->top];‬
+‭}‬
+c‭ har pop(struct Stack* stack)‬
+‭{‬
+‭if (!isEmpty(stack))‬
+‭return stack->array[stack->top--];‬
+‭return '$';‬
+‭}‬
+
+v‭ oid push(struct Stack* stack, char op)‬
+‭{‬
+‭stack->array[++stack->top] = op;‬
+‭}‬
+i‭nt evaluatePostfix(char* exp)‬
+‭{‬
+‭struct Stack* stack = createStack(strlen(exp));‬
+‭int i;‬
+‭if (!stack)‬
+‭return -1;‬
+‭for (i = 0; exp[i]; ++i) {‬
+‭if (isdigit(exp[i]))‬
+‭push(stack, exp[i] - '0');‬
+‭else {‬
+‭int val1 = pop(stack);‬
+‭int val2 = pop(stack);‬
+‭switch (exp[i]) {‬
+‭case '+':‬
+‭push(stack, val2 + val1);‬
+‭break;‬
+‭case '-':‬
+‭push(stack, val2 - val1);‬
+‭break;‬
+‭case '*':‬
+‭push(stack, val2 * val1);‬
+‭break;‬
+‭case '/':‬
+‭push(stack, val2 / val1);‬
+‭break;‬
+‭}‬
+‭}‬
+}‭ ‬
+‭return pop(stack);‬
+‭}‬
+i‭nt main()‬
+‭{‬
+‭char exp[] = "231*+9-";‬
+‭printf("postfix evaluation: %d", evaluatePostfix(exp));‬
+‭return 0;‬
+‭}‬
+‭_________________________________________________________________________________‬
+
+‭->HEAP SORTING‬
+‭def heapify(arr, n, i):‬
+‭largest = i‬
+‭left = 2 * i + 1‬
+‭right = 2 * i + 2‬
+‭if left < n and arr[left] > arr[largest]:‬
+‭largest = left‬
+‭if right < n and arr[right] > arr[largest]:‬
+‭largest = right‬
+‭if largest != i:‬
+‭arr[i], arr[largest] = arr[largest], arr[i]‬
+‭heapify(arr, n, largest)‬
+‭def heap_sort(arr):‬
+‭n = len(arr)‬
+‭for i in range(n // 2 - 1, -1, -1):‬
+‭heapify(arr, n, i)‬
+‭for i in range(n - 1, 0, -1):‬
+‭arr[i], arr[0] = arr[0], arr[i]‬
+‭heapify(arr, i, 0)‬
+‭ y_list = [12, 11, 13, 5, 6, 7]‬
+m
+‭heap_sort(my_list)‬
+‭print("Sorted array:", my_list)‬
+
+
