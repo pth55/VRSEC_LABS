@@ -48,6 +48,46 @@ TO RENAME A TABLE
 --------------------
 RENAME TABLE old_table TO new_table;
 
+TO MODIFY DATATYPE SIZE
+-------------------------
+ let's say you have a table named example_table with a column named example_column of type VARCHAR(50), and you want to change it to VARCHAR(100):
+ALTER TABLE example_table
+MODIFY COLUMN example_column VARCHAR(100);
+
+TO INSERT DATA BASED ON SOME CONDITION:
+--------------------------------------
+UPDATE employees
+SET bonus = CASE
+    WHEN department = 'IT' THEN 1000
+    WHEN department = 'HR' THEN 800
+    WHEN department = 'Finance' THEN 1200
+    ELSE 500
+END;
+-- means if table already contains dept column using that we are inserting the data
+
+UPDATE student
+SET dno = CASE
+    WHEN id IN (1, 2, 4, 6, 8, 10) THEN 1
+    WHEN id IN (3, 7, 9) THEN 2
+    WHEN id = 5 THEN 3
+    ELSE dno  -- If none of the above conditions match, keep the existing value
+END;
+
+NOTE: THIS WORKS ONLY WHEN SAFE UPDATE MODE IS DIABLED IN MYSQL
+Disable safe update mode for the current session:
+Before executing your UPDATE statement, you can disable safe update mode for the current session: SET SQL_SAFE_UPDATES = 0;
+After executing your UPDATE statement, you might want to re-enable safe update mode: SET SQL_SAFE_UPDATES = 1;
+
+
+DELETE A TABLE ROWS [NOT TABLE]
+------------------------------
+DELETE FROM table_name;
+
+TO DELETE A TABLE COMPLETELY
+----------------------------
+DROP TABLE table_name
+DROP DATABASE db_name
+
 
 
 
