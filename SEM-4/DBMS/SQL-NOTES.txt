@@ -1,0 +1,90 @@
+to check version: mysql --version
+to start server : mysql -u <user_name> -p ---- hit enter and give your password
+to see avilable DBs: show databases;
+to create DB: create database <db_name>
+path where our DB's are stored: C:\ProgramData\MySQL\MySQL Server 8.0\Data [make sure to enable hidden show files]
+
+
+COMMANDS
+========
+CREATE DATABASE database_name;
+
+USE database_name; ---> to select the current DB
+
+CREATE TABLE table_name
+(col_name1 data_type constraints,
+); 
+
+To insert new column to existing table:
+---------------------------------------
+ALTER TABLE table_name
+ADD COLUMN new_column_name data_type;
+
+NOTE: to insert multiple columns use (col1 dtype const., col2 etc..);
+
+
+To insert Values to existing table:
+----------------------------------
+INSERT INTO students VALUES
+(1, "B PAVAN KUMAR", "VIJ, AP, INDIA"),
+(2, "K HARI", "HYD, TS, INDIA"),
+(3, "V ANIL", "ONG, AP, INDIA"),
+(4, "L RAJ", "VIJ, AP, INDIA"),
+(5, "M PRAVEEN KUMAR", "VIJ, AP, INDIA");
+
+
+
+to update row/record data:
+---------------------------------
+UPDATE table_name
+SET column_name1 = new_value1, column_name2 = new_value2, ... WHERE condition;
+
+TO UPDATE COLUMN NAME:
+----------------------
+ALTER TABLE table_name
+CHANGE COLUMN old_column_name new_column_name data_type;
+
+TO RENAME A TABLE
+--------------------
+RENAME TABLE old_table TO new_table;
+
+
+
+
+
+MYSQL DATATYPES:
+---------------
+MySQL supports various data types that you can use to define the type of data that each column can store. Here are some commonly used data types in MySQL:
+1. Numeric Types:
+INT or INTEGER: Integer type (e.g., 1, 10, -5).
+TINYINT: Small integer (e.g., 0 to 255).
+SMALLINT: Small integer (e.g., -32768 to 32767).
+MEDIUMINT: Medium-sized integer.
+BIGINT: Large integer.
+FLOAT: Single-precision floating-point number.
+DOUBLE or REAL: Double-precision floating-point number.
+DECIMAL or NUMERIC: Fixed-point decimal number.
+
+NOTE: syntax like INT(X) etc.., are deprecated..
+
+2. String Types:
+CHAR: Fixed-length string.
+VARCHAR: Variable-length string.
+TINYTEXT, TEXT, MEDIUMTEXT, LONGTEXT: Various lengths of text strings.
+ENUM: Enumeration, where you can specify a set of possible values.
+
+3. Date and Time Types:
+DATE: Date (YYYY-MM-DD).
+TIME: Time (HH:MM:SS).
+DATETIME: Date and time (YYYY-MM-DD HH:MM:SS).
+TIMESTAMP: Timestamp (automatically updates to the current timestamp on INSERT or UPDATE).
+YEAR: Year in 2-digit or 4-digit format.
+
+4. Binary Types:
+BINARY: Fixed-length binary data.
+VARBINARY: Variable-length binary data.
+BLOB, TINYBLOB, MEDIUMBLOB, LONGBLOB: Various lengths of binary data.
+
+5. Spatial Types:
+GEOMETRY, POINT, LINESTRING, POLYGON: Spatial data types for storing geometric objects.
+
