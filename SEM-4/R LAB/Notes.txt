@@ -1,0 +1,99 @@
+-> c() - combines/concats its arguments, returns vector
+
+-> print() - to print something to console
+
+-> readline(prompt="text to apper on screen: ") - to read a line, reads charcters
+
+-> cat(): The cat() function concatenates and prints the specified objects. It is often used to display concatenated strings or values.
+cat("This is a", "concatenated string.\n")
+
+-> paste(): similar to cat(), is used to concatenate multiple character strings and return the result as a single character string. It doesn't directly print to the console.
+result <- paste("This", "is", "a", "concatenated", "string.")
+cat(result, "\n")
+
+-> To convert from string to others
+user_input <- readline("Enter an integer: ")
+user_integer <- as.integer(user_input)
+Similarly,
+- as.numeric(): Converts the input to a numeric (floating-point) type.
+- as.logical(): Converts the input to a logical (boolean) type.
+- as.character(): Converts the input to a character type.
+- as.factor(): Converts the input to a factor type.
+
+-> is.na() - is used to check if the conversion was successful. 
+# Check if the conversion is successful
+if (!is.na(user_integer)) {
+  cat("You entered:", user_integer, "\n")
+} else {
+  cat("Invalid input. Please enter a valid integer.\n")
+}
+
+-> seq(from, to, by, length.out, along.with)
+	from: The starting value of the sequence.
+	to: The end value of the sequence.
+	by: The step size or increment between values. If not specified, it is determined automatically.
+	length.out: The desired length of the output sequence.
+	along.with: An optional argument to specify the length of the output sequence based on another vector.
+
+Ex:
+# Generate a sequence from 1 to 10 with the default increment of 1
+sequence <- seq(1, 10)
+
+# Generate a sequence from 0 to 1 with an increment of 0.2
+sequence <- seq(0, 1, by = 0.2)
+
+# Generate a sequence from 0 to 1 with 5 elements
+sequence <- seq(0, 1, length.out = 5)
+
+
+-> mean(seq) - print(mean(20:60))
+
+-> for(x in 1:10) --> this is also a type of sequence
+-> max(sequence)
+-> min(sequence)
+-> sample(x, size, replace = FALSE, prob = NULL)
+x: A vector, list, or set of values to sample from.
+size: The number of random samples to generate.
+replace: A logical value indicating whether sampling should be with replacement (TRUE) or without replacement (FALSE). If replace is TRUE, the same element can be selected more than once.
+prob: A vector of probability weights for obtaining the elements of x.
+Ex:
+# Sample 3 random elements from the vector 1:10
+sample(1:10, 3)
+
+# Sample 5 random elements with replacement from the letters A, B, C
+sample(c("A", "B", "C"), 5, replace = TRUE)
+
+# Sample 4 elements from the numbers 1:5 with different probabilities
+sample(1:5, 4, prob = c(0.1, 0.2, 0.3, 0.2, 0.2))
+
+
+-> head(sequence, no_of_vals)
+print(head(c(10, 20, 30, 40, 50, 60, 70, 80, 90), 5)) #10 20 30 40 50
+
+-> tail(sequence, no_of_vals)
+print(tail(c(10, 20, 30, 40, 50, 60, 70, 80, 90), 5)) # 50 60 70 80 90
+
+-> LETTERS - gives all Upper case alphabets
+-> letters - gives all lower case alphabets
+
+Write a R program to extract first 10 english letter in lower case and last 10 letters in upper case and extract letters between 22nd to 24th letters in upper case.
+print("First 10 letters in lower case:")
+t = head(letters, 10)
+print(t)
+print("Last 10 letters in upper case:")
+t = tail(LETTERS, 10)
+print(t)
+print("Letters between 22nd to 24th letters in upper case:")
+e = tail(LETTERS[22:24])
+print(e)
+
+
+
+to print memory allocation details:
+-----------------------------------
+ls() and ls.str() - are used to list the objects in the current environment or to display the structure of objects.
+
+ls.str() - List the structure of all objects in the current environment
+
+
+
