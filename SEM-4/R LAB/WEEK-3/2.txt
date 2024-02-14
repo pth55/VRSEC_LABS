@@ -1,0 +1,13 @@
+q = c(1, 2, 3, 4, 5)
+q2 = c(q, 3, 4, 5)
+q2
+q3 = as.factor(q2)
+q3
+
+as.numeric(q3) # gives original vec
+
+names = c("Hari", "Pavan", "Vishnu", "Giri", "Bhanu", "Pavan", "Vishnu", "")
+new_fac = factor(names, levels=c("Pavan", "Vishnu"), ordered = TRUE)
+new_fac # matches with level names
+
+
