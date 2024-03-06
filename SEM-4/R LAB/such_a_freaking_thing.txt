@@ -1,0 +1,369 @@
+R STUDIO
+-> explain about ide
+highly custamizable
+main components
+* text editor
+* output console
+* Global environment
+* plots
+-> R Studio Tools
+Genral options - like selecting R Version 
+Code editing - text editor
+Apperance Options - like chaging font, theme etc..
+Pane Layout - chaging layout of the r studio - like rearranging things in r studio
+package options - we can directly download packages
+Spelling - to write LATEX like docs
+Git/SVN - builtin git integration
+
+
+Command interface
+speed - easy to execute commands
+but a little frustating
+can't save files
+
+
+Installing Packages
+--------------------
+-> Install.packages("coefplot")
+-> remove.packages - to delete all packages
+-> require(pack_name) [or] library("pack_name")
+-> detach("pack")
+
+Basic Datatypes
+---------------
+Numeric
+-> is.numeric(1) -> TRUE
+-> class(10) -> numeric
+-> class(10L) -> integer
+
+Charcter
+x = "data"
+nchar(x)
+
+Date
+Onlydate - date <- as.Date("YYYY-MM-DD")
+Date with Time - as.POSIXct("YYYY-MM-DD HH:MM")
+
+Logical
+TRUE - 1
+FALSE - 0
+print(TRUE * 10) -> 10
+is.logical(TRUE)
+
+
+Operators 
+== 
+!=
+<=
+>=
+<
+>
+
+vector methods
+--------------
+A vector is a collection of elements, all of the same type.
+A vector cannot be a mixed type.
+c(1, "2") -> not possible
+no dimentions
+need to use c()
+can perfrom any math operations on two vectors with using loops
+
+x + y
+x ^ y
+x <= 5 -> for all elements
+
+
+c(elements)
+length(vec)
+any(x < y)
+all(x > y)
+nchar(vec) -> gives all elements length
+c(x=10, y=20) -> names to elements
+
+
+Basic Methods
+mean()
+sum()
+
+
+Missing Data - Na and NULL
+
+Na - need to be replaced in future
+NA will often be seen as just another element of a vector.
+
+x = c(1, Na, 2, 3)
+is.na(x) == for all
+
+NULL
+----
+NULL is the absence of anything.
+It is not exactly missingness, it is nothingness.
+
+x = NULL
+is.null(x) # TRUE
+
+data.frames
+----------
+just like a table with rows and columns ex: excel sheet
+each column is a vector
+can store hetrogenious data
+
+
+Difference b/w List and Data.frame is
+-> in dframes size of all vectors should be same
+-> but in lists it not need to be same
+
+
+DATA.FRAMES vs ARRAYS vs MATRICES vs LISTS
+-------------------------------------------
+Creation
+	df = data.frame(col1 = vec1, col2 = vec2, .... , coln = vecn)
+	a = array(1:n, dim = c(row, col, layers))
+	m = matrix()
+	l = list(vec1, vec2, etc..)
+
+Accessing
+	df[row_list, col_list]
+	a[row, col, layer]
+	l[[row_name]][col_num]
+	m[row, col]
+
+
+
+
+
+READING EXCEL [readxl]
+----------------------
+obj = read_excel("path")
+head(obj)
+tail(obj)
+summary(obj)
+obj$NEW_COL <- NULL;
+
+READING CSV [no library required]
+---------------------------------
+obj = read.csv(file = "path")
+nrow()
+ncol()
+new_csv = subset(obj, codition)
+write.csv(new_obj, "path")
+
+
+READING DATA FROM MYSQL [RMySQL]
+--------------------------------
+obj == dbConnect(MYSQL(), user="", password="", dbname="", host="localhost")
+dbListTables(obj)
+dbListFields(obj, "table_nam")
+res = dbSendQuery(obj, "query")
+data = fetch(res, n = no.of cols)
+
+new_obj = dbReadTable(conn = obj, name = "table_name")
+new_obj$new_col = NULL
+
+
+
+Control Statements
+--------------------
+if
+else
+else if
+
+for loop
+while loop
+
+switch
+
+day <- "Monday"
+switch(day,
+       "Monday" = print("It's Monday"),
+       "Tuesday" = print("It's Tuesday"),
+       "Wednesday" = print("It's Wednesday"),
+       print("Other day")
+)
+
+
+table(df$Col) ==> it will display same value count as a table
+male_count <- sum(gender == "Male")
+
+
+
+  square <- 0
+  cube <- 0
+  i <- 1
+  while (i <= number) {
+    square <- square + i^2
+    cube <- cube + i^3
+    i <- i + 1
+  }
+
+  multiples <- c()
+  for (i in 1:limit) {
+    if (i %% number == 0) {
+      multiples <- c(multiples, i)
+    }
+  }
+
+
+n = 121
+x = n
+sum = 0
+while(x != 0){
+  sum = sum*10+(x%%10)
+  x = x %/% 10;
+}
+
+Variables
+--------
+
+assignment
+
+x <- 10 [or] x = 10 [or] 10 -> x
+assing("j", 100) # creates new var. j and assigns 100 to it
+rm(j) # like del in python - destroy memory allocated to j
+
+
+
+
+
+
+
+
+require(ggplot2)
+data("diamonds")
+
+pnames = c("Ram", "Aruna", "Manoj", "Rani", "Vijay", "Bhanu")
+psex = as.factor(c("M", "F", "M", "F", "M", "F"))
+pfunny = as.factor(c("High", "Med", "Low", "High", "High", "Med"))
+
+dframe = data.frame(names=pnames, sex=psex, funny=pfunny)
+dframe
+
+# TASK 1
+dframe$Age = c(41, 41, 15, 16, 21, 60)
+dframe
+class(dframe$funny)
+class(dframe$Age)
+
+# to insert new row into existing df
+dframe = rbind(dframe, c("RGV", "M", "Med", 60))
+dframe
+# or
+#age = c(41, 41, 15, 16, 21, 60)
+#cbind(dframe, age)
+#dframe
+
+# TASK 2
+new_dframe1 = dframe[, c(1,4,2,3)]
+new_dframe
+
+# TASK 3
+pnames2 = c("Suresh", "Anil", "Prasad", "Kavitha")
+psex2 = as.factor(c("M", "M", "M", "F"))
+pfunny2 = as.factor(c("High", "Med", "Low", "High"))
+dframe2 = data.frame(names=pnames2, sex=psex2, funny=pfunny2)
+
+age2 = c(41, 41, 15, 16)
+cbind(dframe2, age2)
+
+new_dframe2 = dframe[, c(1,4,2,3)]
+
+mydataframe = rbind(new_dframe1, new_dframe2)
+mydataframe
+
+
+# extract names and ages of any records where the individual is female and has a level of funniness of "Med" or "High"
+mydataframe[mydataframe$sex=="F" & mydataframe$funny != "Low", c("names", "Age")]
+
+x = 10
+x
+rm(x)
+x
+nchar(c("pavan", "lokesh", "praveen"))
+
+y = 3
+x = 1
+if(x == 1 & y != 1){
+  print("Ok, cool!")
+}
+
+# Create a data frame for employees
+employees <- data.frame(
+  name = c("John", "Alice", "Bob", "Emily", "Michael"),
+  age = c(30, 25, 35, 28, 40),
+  designation = c("Manager", "Developer", "Developer", "Manager", "Analyst")
+)
+
+# Print the data frame
+print(employees)
+
+# Count the number of employees in each designation
+designation_counts <- table(employees$designation)
+print(designation_counts)
+
+
+n = 121
+x = n
+sum = 0
+while(x != 0){
+  sum = sum*10+(x%%10)
+  x = x %/% 10;
+}
+if (sum == n){
+  print("palin")
+} else {
+  print("Not Palin.")
+}
+
+group = c(1:10)
+value = c(10:-3)
+diamonds
+# HISTOGRAPH
+ggplot(diamonds) + geom_histogram(aes(x=carat))
+
+ggplot(diamonds, aes(x = carat, y = price)) + geom_point(aes(color="red"))
+
+# Creating an array
+my_array <- array(1:12, dim = c(2, 3, 2))
+my_array
+
+# Accessing elements of the array
+print(my_array[1, 2, 1])  # Access element at row 1, column 2, layer 1
+print(my_array[, , 2]) 
+
+
+
+my_array[2,2,2]
+
+
+l = list(c("Pavan", "Kumar"), c(1:3))
+l
+rm(l)
+l
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
